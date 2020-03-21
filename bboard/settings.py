@@ -128,6 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -139,3 +141,8 @@ EMAIL_HOST_USER = 'vachpi16@bk.ru'#
 EMAIL_HOST_PASSWORD = 'qwe123qwe1231'#
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
