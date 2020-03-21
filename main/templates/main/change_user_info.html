@@ -1,0 +1,14 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}Изменить личные данные{% endblock %}
+
+{% block content %}
+<h2>Изменить личные данные</h2>
+<form class=""  method="post">
+    {% csrf_token %}
+    {% bootstrap_form form layout='horizontal' %}
+    {% buttons submit='Изменить' %}{% endbuttons %}
+</form>
+{% endblock %}

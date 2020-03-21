@@ -1,0 +1,28 @@
+{% extends "layout/basic.html" %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<ul class="list-unstyle">
+    {% for bb in bbs %}
+    <li class="media my-5 p-3 border">
+        {% url 'main:detail' pk=bb.pk as url %}
+        <a href="{{ url }}">
+            {% if bb.image %}
+            <img class="mr-3" width="100" height="100" src="{{ bb.image.url }}" alt="">
+            {% else %}
+            <img class="mr-3" width="100" height="100" src="{% static 'main/empty.png' %}" alt="">
+            {% endif %}
+        </a>
+        <div class="media-body">
+            <h3><a href="{{ url }}">{{  bb.title }}</a></h3>
+            <div class="">{{ bb.content }}</div>
+            <p class="text-right font-weight-bold">{{ bb.price }} руб.</p>
+            <p class="text-right font-italic">{{ bb.created_at }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
